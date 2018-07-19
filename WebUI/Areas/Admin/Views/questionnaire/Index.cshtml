@@ -1,0 +1,83 @@
+﻿@model PagedList<WebUI.Areas.Admin.Controllers.questionnaireController.PapersInfos>
+@using Webdiyer.WebControls.Mvc;
+@{
+    ViewBag.Title = "问卷管理-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item active">问卷管理</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fa fa-align-justify "></i> 问卷列表</span>
+
+                        <span><a href="@Url.Action("create", "questionnaire")" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; 新建</a></span>
+
+                    </div>
+
+                    <div class="card-block text-center">
+                        <table class="table table-bordered table-striped table-condensed text-center">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">问卷标题</th>
+                                    <th class="text-center">开始日期</th>
+                                    <th class="text-center">结束日期</th>
+                                    <th class="text-center">题目管理</th>
+                                    <th class="text-center">录入时间</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.PapersTitle</td>
+                                            <td>@Convert.ToDateTime(item.StartDate).ToString("yyyy-MM-dd")</td>
+                                            <td>@Convert.ToDateTime(item.EndDate).ToString("yyyy-MM-dd")</td>
+                                            <td>
+                                                <a href="@Url.Action("Index", "Subject", new { PapersId=item.PapersId})">@{@item.SubjectCount}道题目</a>
+                                            </td>
+                                            <td>@item.PapersDate</td>
+                                            <td><a href="@Url.Action("modify", "questionnaire", new { id=item.PapersId})" class="btn btn-success"><i class="fa fa-edit"></i>&nbsp;修改</a></td>
+                                        </tr>
+                                    }
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                        <nav>
+                            @Html.Pager(
+                            Model,
+                            new PagerOptions
+                            {
+                                PageIndexParameterName = "id",
+                                NumericPagerItemCount = 5,
+                                ContainerTagName = "ul",
+                                CssClass = "pagination",
+                                CurrentPagerItemTemplate = "<li class='page-item active'><a class=\"page-link\" href=\"#\">{0}</a></li>",
+                                DisabledPagerItemTemplate = "<li class=\"page-item\"><a class=\"page-link\">{0}</a></li>",
+                                PagerItemTemplate = "<li>{0}</li>",
+                                PageIndexBoxId = "pageIndexBox",
+                                AutoHide = false,
+                                FirstPageText = "首页",
+                                LastPageText = "尾页",
+                                PrevPageText = "上一页",
+                                NextPageText = "下一页"
+                            })
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>

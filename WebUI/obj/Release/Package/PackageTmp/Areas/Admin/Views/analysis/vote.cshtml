@@ -1,0 +1,127 @@
+﻿
+@model IList<EFClassLibrary.PapersInfo>
+
+    @{
+    ViewBag.Title = "投票统计-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">后台首页</li>
+        <li class="breadcrumb-item">问卷分析</li>
+        <li class="breadcrumb-item active">投票统计</li>
+    </ol>
+
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            @{
+            EFClassLibrary.QuestionnaireDBEntities db = new EFClassLibrary.QuestionnaireDBEntities();
+            foreach (var item in Model)
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <span><i class="fa fa-align-justify "></i>@item.PapersTitle</span>
+                            </div>
+                            <div class="card-block text-left">
+                                <table class="table table-bordered table-striped table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">题号</th>
+                                            <th class="text-center">投票</th>
+                                            <th class="text-center">类型</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                var slist = db.SubjectInfo.OrderBy(p => p.SubjectId).ToList();
+
+
+                int i = 1;
+                foreach (var items in slist)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>
+                            <p><h6>@items.SubjectDepict</h6></p>
+
+
+
+
+                            @{
+                    var olist = db.OptionInfo.Where(o => o.SubjectId == items.SubjectId).OrderBy(o => o.OptionDate).ToList();
+
+                    foreach (var itemss in olist)
+                    {
+
+                        <p>
+
+                            @{
+
+                        var vcount = Convert.ToDouble(db.VoteInfo.Where(v => v.SubjectId == itemss.SubjectId).ToList().Count);
+                        var ocount = Convert.ToDouble(db.VoteInfo.Where(v => v.OptionId == itemss.OptionId).ToList().Count);
+                        double pro = 0;
+                        if (vcount == 0)
+                        {
+                            pro = 0;
+
+                        }
+                        else
+                        {
+                            pro = (ocount / vcount) * 100;
+
+                        }
+
+                        ViewBag.pro = pro.ToString("F2");
+                        ViewBag.ocount = ocount;
+
+                            }
+
+                            @itemss.OptionContent （@{@ViewBag.ocount}票  @{@ViewBag.pro}%）
+                                  
+                                </p>
+                                <p>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: @{@ViewBag.pro}%; height: 1px;" aria-valuenow="@ViewBag.pro" aria-valuemin="0" aria-valuemax="100"></div>
+                                </p> }
+                            }
+                        </td>
+                        <td>
+                            @{
+                    var SubjectType = string.Empty;
+                    if (items.SubjectType == 1)
+                    {
+                        SubjectType = "单选";
+                    }
+                    else if (items.SubjectType == 2)
+                    {
+                        SubjectType = "多选";
+                    }
+                    else
+                    {
+                        SubjectType = "文本";
+                    }
+                    ViewBag.SubjectType = SubjectType;
+                            }
+                            @ViewBag.SubjectType
+                        </td>
+
+                    </tr>
+                    i++;
+                }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.col-->
+                </div>
+
+            }
+
+
+            }
+        </div>
+    </div>

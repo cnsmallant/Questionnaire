@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="威海信息港,威海门户网站，威海网上信息中心、恋爱、婚恋、爱情交友中心、威海新闻中心、威海电子商务中心、威海交友平台、威海游戏平台。作为山东省威海市的门户网站，威海信息港成立于1997年，是威海规模最大、技术实力最强、内容最丰富、点击率最高的门户网站。经过多年的发展，威海信息港已经建成5大类、28个小类、40多个频道和栏目的内容，威海信息港已经成为山东乃至全国的重要站点，成为全国了解威海的窗口，成为威海人民爱威海的网上驿站。">
+    <meta name="author" content="威海信息港">
+    <meta name="keyword" content="威海,信息港,威海社区,威海房产,威海房地产,威海房产网,威海汽车,威海汽车网,威海旅游,威海人才,威海招聘,出国劳务,威海新闻,威海资讯,威海游戏,保皇游戏,FLASH游戏,威海交友,征婚,交友,情缘,恋爱,网友活动,同学录,网上聊天,免费电影,极品影院,威海供求信息,威海分类信息,威海便民,威海财经,威海美食,威海黄页,威海问答,健康问答,法律问答,健康,威海家装,医保查询,公积金查询,威海汽车时刻表,威海火车,威海轮船,威海行风热线,网上商城,上网导航,汽车团购,房产团购,家装团购,招聘会,毕业求职,3G,地图,网络电视,法律,教育,网通,联通,宽带,杀毒,短信,悦铃,失物招领 ">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <!-- Icons -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="/css/style.css" rel="stylesheet">
+    <!-- Bootstrap and necessary plugins -->
+    <script src="/assets/js/libs/jquery.min.js"></script>
+    <script src="/assets/js/libs/tether.min.js"></script>
+    <script src="/assets/js/libs/bootstrap.min.js"></script>
+    <script src="/assets/js/libs/pace.min.js"></script>
+    <!-- Plugins and scripts required by all views -->
+    <script src="/assets/js/libs/Chart.min.js"></script>
+
+    <!-- GenesisUI main scripts -->
+    <script src="/js/app.js"></script>
+    <!-- Plugins and scripts required by this views -->
+    <!-- Custom scripts required by this view -->
+    <script src="/js/views/main.js"></script>
+
+    <script src="/My97DatePicker/WdatePicker.js"></script>
+    <title>@{@ViewBag.Title}投票系统后台</title>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <header class="app-header navbar">
+        <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">☰</button>
+        <a class="navbar-brand" href="#"></a>
+        <ul class="nav navbar-nav hidden-md-down">
+            <li class="nav-item">
+                <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
+            </li>
+
+            <li class="nav-item px-1">
+                <a class="nav-link" href="@Url.Action("Index","Home")">后台首页</a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" href="@Url.Action("Index", "questionnaire")">问卷管理</a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" href="@Url.Action("Index", "analysis")">问卷分析</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                @{
+                    EFClassLibrary.QuestionnaireDBEntities db = new EFClassLibrary.QuestionnaireDBEntities();
+                    if (HttpContext.Current.Request.Cookies["uname"] != null || HttpContext.Current.Request.Cookies["upwd"] != null)
+                    {
+                        var uname = TDESHelper.DecryptString(HttpContext.Current.Request.Cookies["uname"].Value);
+                        var upwd = HttpContext.Current.Request.Cookies["upwd"].Value;
+                        var admin = db.AdminInfo.Where(u => u.AdminName == uname & u.AdminPwd == upwd).SingleOrDefault();
+                        ViewBag.admin = admin;
+                    }
+                }
+                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img src="/img/avatars/6.jpg" class="img-avatar" alt="@ViewBag.admin.AdminName">
+                    <span class="hidden-md-down">@ViewBag.admin.AdminName</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <a class="dropdown-item" href="@Url.Action("changepassword", "profile")"><i class="fa fa-shield"></i>修改密码</a>
+                    <a class="dropdown-item" href="@Url.Action("signout", "profile")"><i class="fa fa-lock"></i>安全退出</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
+            </li>
+        </ul>
+    </header>
+    <div class="app-body">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="@Url.Action("Index","Home")"><i class="icon-home"></i> 后台首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "questionnaire")"><i class="icon-cursor"></i>问卷管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "analysis")"><i class="icon-pie-chart"></i>问卷分析</a>
+                    </li>
+                   
+                </ul>
+            </nav>
+        </div>
+        <!-- Main content -->
+        <main class="main">
+            @RenderBody()
+        </main>
+    </div>
+
+
+
+    <footer class="app-footer  text-center" >
+        <span>
+           威海信息港&copy; 1997-@DateTime.Now.ToString("yyyy") 
+        </span>
+    </footer>
+
+
+</body>
+</html>

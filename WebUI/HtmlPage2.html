@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="assets/js/libs/jquery.min.js"></script>
+    <style>
+        .Mask {
+            position: absolute;
+            top: 0px;
+            background-color: #ff006e;
+            width: 100%;
+            height: 100%;
+            z-index: 9998;
+            _position: absolute;
+            filter: alpha(opacity=55); /*IE滤镜，透明度75%*/
+            -moz-opacity: 0.55; /*Firefox私有，透明度75%*/
+            opacity: 0.55; /*其他，透明度75%*/
+        }
+
+        .img {
+            position: absolute;
+            z-index: 12;
+            top: 60px;
+            left: 50%;
+            margin-left: -95px;
+        }
+        /*动画名字， 动画运行的时间，alternate平滑过渡， infinite是反复执行*/
+        .imgAnimation {
+            animation-name: imgAnimation;
+            animation: imgAnimation 3s alternate;
+            -webkit-animation: imgAnimation 3s alternate;
+            -moz-animation: imgAnimation 3s alternate infinite;
+        }
+
+        @-webkit-keyframes imgAnimation {
+            0% {
+                left: -198px;
+                top: 60px;
+            }
+
+            100% {
+                top: 60px;
+                left: 50%;
+                margin-left: -95px;
+            }
+        }
+    </style>
+</head>
+<body style="padding:0px; margin:0px;">
+    <div>
+
+        <div style="width:100%;height:auto;overflow:hidden; position:relative">
+            <div class="Mask"></div>
+            <img src="img/1.jpg" style="width:100%;height:100%;" />
+            <div style="width:100%;height:660px;float:left;position:absolute;z-index:9999; top:0px; text-align:center;color:#ffffff;padding-top:20px;">
+
+                <h1 id="s" style="display:none">你好，世界！</h1>
+                <h1 class="img imgAnimation">哈</h1>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var s = $("#s");
+        s.fadeIn(2000);
+    </script>
+
+</body>
+</html>

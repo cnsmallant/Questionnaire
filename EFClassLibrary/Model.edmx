@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuestionnaireDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="AdminInfo">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" />
+          <Property Name="AdminPwd" Type="varchar" MaxLength="50" />
+          <Property Name="AdminType" Type="int" />
+          <Property Name="AdminDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CommentInfo">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentDepict" Type="text" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" />
+          <Property Name="PapersId" Type="int" />
+          <Property Name="CommentDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LaudInfo">
+          <Key>
+            <PropertyRef Name="LaudId" />
+          </Key>
+          <Property Name="LaudId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="int" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="LaudDate" Type="datetime" />
+          <Property Name="PapersId" Type="int" />
+        </EntityType>
+        <EntityType Name="OptionInfo">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OptionContent" Type="varchar" MaxLength="225" />
+          <Property Name="SubjectId" Type="int" />
+          <Property Name="OptionDate" Type="datetime" />
+          <Property Name="AdminId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PapersInfo">
+          <Key>
+            <PropertyRef Name="PapersId" />
+          </Key>
+          <Property Name="PapersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PapersTitle" Type="varchar" MaxLength="225" />
+          <Property Name="PapersDepict" Type="text" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="PapersDate" Type="datetime" />
+          <Property Name="AdminId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SubjectInfo">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectDepict" Type="text" />
+          <Property Name="PapersId" Type="int" />
+          <Property Name="SubjectType" Type="int" />
+          <Property Name="SubjectDate" Type="datetime" />
+          <Property Name="AdminId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="225" />
+          <Property Name="UserPhone" Type="varchar" MaxLength="50" />
+          <Property Name="UserDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VoteInfo">
+          <Key>
+            <PropertyRef Name="VoteId" />
+          </Key>
+          <Property Name="VoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PapersId" Type="int" />
+          <Property Name="SubjectId" Type="int" />
+          <Property Name="OptionId" Type="varchar" MaxLength="50" />
+          <Property Name="VoteDepict" Type="text" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="VoteDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="QuestionnaireDBModelStoreContainer">
+          <EntitySet Name="AdminInfo" EntityType="Self.AdminInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentInfo" EntityType="Self.CommentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaudInfo" EntityType="Self.LaudInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OptionInfo" EntityType="Self.OptionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PapersInfo" EntityType="Self.PapersInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectInfo" EntityType="Self.SubjectInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoteInfo" EntityType="Self.VoteInfo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuestionnaireDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="QuestionnaireDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminInfo" EntityType="QuestionnaireDBModel.AdminInfo" />
+          <EntitySet Name="CommentInfo" EntityType="QuestionnaireDBModel.CommentInfo" />
+          <EntitySet Name="LaudInfo" EntityType="QuestionnaireDBModel.LaudInfo" />
+          <EntitySet Name="OptionInfo" EntityType="QuestionnaireDBModel.OptionInfo" />
+          <EntitySet Name="PapersInfo" EntityType="QuestionnaireDBModel.PapersInfo" />
+          <EntitySet Name="SubjectInfo" EntityType="QuestionnaireDBModel.SubjectInfo" />
+          <EntitySet Name="UserInfo" EntityType="QuestionnaireDBModel.UserInfo" />
+          <EntitySet Name="VoteInfo" EntityType="QuestionnaireDBModel.VoteInfo" />
+        </EntityContainer>
+        <EntityType Name="AdminInfo">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminType" Type="Int32" />
+          <Property Name="AdminDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CommentInfo">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PapersId" Type="Int32" />
+          <Property Name="CommentDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LaudInfo">
+          <Key>
+            <PropertyRef Name="LaudId" />
+          </Key>
+          <Property Name="LaudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int32" />
+          <Property Name="IPAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LaudDate" Type="DateTime" Precision="3" />
+          <Property Name="PapersId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OptionInfo">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OptionContent" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="OptionDate" Type="DateTime" Precision="3" />
+          <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PapersInfo">
+          <Key>
+            <PropertyRef Name="PapersId" />
+          </Key>
+          <Property Name="PapersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PapersTitle" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="PapersDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="PapersDate" Type="DateTime" Precision="3" />
+          <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubjectInfo">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PapersId" Type="Int32" />
+          <Property Name="SubjectType" Type="Int32" />
+          <Property Name="SubjectDate" Type="DateTime" Precision="3" />
+          <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VoteInfo">
+          <Key>
+            <PropertyRef Name="VoteId" />
+          </Key>
+          <Property Name="VoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PapersId" Type="Int32" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="OptionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VoteDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VoteDate" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuestionnaireDBModelStoreContainer" CdmEntityContainer="QuestionnaireDBEntities">
+          <EntitySetMapping Name="AdminInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.AdminInfo">
+              <MappingFragment StoreEntitySet="AdminInfo">
+                <ScalarProperty Name="AdminDate" ColumnName="AdminDate" />
+                <ScalarProperty Name="AdminType" ColumnName="AdminType" />
+                <ScalarProperty Name="AdminPwd" ColumnName="AdminPwd" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.CommentInfo">
+              <MappingFragment StoreEntitySet="CommentInfo">
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CommentDepict" ColumnName="CommentDepict" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LaudInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.LaudInfo">
+              <MappingFragment StoreEntitySet="LaudInfo">
+                <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+                <ScalarProperty Name="LaudDate" ColumnName="LaudDate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="LaudId" ColumnName="LaudId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OptionInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.OptionInfo">
+              <MappingFragment StoreEntitySet="OptionInfo">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="OptionDate" ColumnName="OptionDate" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="OptionContent" ColumnName="OptionContent" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PapersInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.PapersInfo">
+              <MappingFragment StoreEntitySet="PapersInfo">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="PapersDate" ColumnName="PapersDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="PapersDepict" ColumnName="PapersDepict" />
+                <ScalarProperty Name="PapersTitle" ColumnName="PapersTitle" />
+                <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.SubjectInfo">
+              <MappingFragment StoreEntitySet="SubjectInfo">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="SubjectDate" ColumnName="SubjectDate" />
+                <ScalarProperty Name="SubjectType" ColumnName="SubjectType" />
+                <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+                <ScalarProperty Name="SubjectDepict" ColumnName="SubjectDepict" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="UserDate" ColumnName="UserDate" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoteInfo">
+            <EntityTypeMapping TypeName="QuestionnaireDBModel.VoteInfo">
+              <MappingFragment StoreEntitySet="VoteInfo">
+                <ScalarProperty Name="VoteDate" ColumnName="VoteDate" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="VoteDepict" ColumnName="VoteDepict" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+                <ScalarProperty Name="VoteId" ColumnName="VoteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

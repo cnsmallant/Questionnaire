@@ -1,0 +1,125 @@
+﻿@model IList<WebUI.Areas.Admin.Controllers.analysisController.CommentInfos>
+@{
+    ViewBag.Title = "点赞分析-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/js/echarts-all.js"></script>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item ">问卷分析</li>
+    <li class="breadcrumb-item active"><a href="#fx">点赞分析</a>  </li>
+    <li class="breadcrumb-item active"><a href="#dt">地图分布</a>  </li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header" id="fx">
+                        <span><i class="fa fa-align-justify "></i> 点赞分析</span>
+                    </div>
+
+                    <div class="card-block">
+                        <table class="table table-bordered table-striped table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>名次</th>
+                                    <th>用户</th>
+                                    <th>手机</th>
+                                    <th>赞数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i=1;
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.UserName</td>
+                                            <td>@item.UserPhone</td>
+                                            <td>@item.LaudCount</td>
+                                        </tr>
+                                        i++;
+                                    }
+                                  
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header" id="dt">
+                        <span><i class="fa fa-align-justify "></i>全省分布</span>
+                    </div>
+
+                    <div class="card-block">
+                        <div id="main" class="col-lg-12" style="height:500px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+
+    </div>
+</div>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: function (a) {
+                return a[2];
+            }
+        },
+        dataRange: {
+            min: 0,
+            max: 1000,
+            color: ['#000093', '#ECF5FF'],
+            text: ['高', '低'],           // 文本，默认为数值文本
+            calculable: true
+        },
+        series: [
+			{
+			    name: '数据名称',
+			    type: 'map',
+			    mapType: '山东',
+			    selectedMode: 'single',
+			    itemStyle: {
+			        normal: { label: { show: true } },
+			        emphasis: { label: { show: true } }
+			    },
+			    data: [
+				        { name: '济南市', value: '@ViewBag.jinan' },
+                        { name: '青岛市', value: '@ViewBag.qingdao' },
+                        { name: '烟台市', value: '@ViewBag.yantai' },
+                        { name: '潍坊市', value: '@ViewBag.weifang' },
+                        { name: '日照市', value: '@ViewBag.rizhao' },
+                        { name: '威海市', value: '@ViewBag.weihai' },
+                        { name: '临沂市', value: '@ViewBag.linyin' },
+                        { name: '枣庄市', value: '@ViewBag.zaozhuang' },
+                        { name: '淄博市', value: '@ViewBag.zibo' },
+                        { name: '济宁市', value: '@ViewBag.jining' },
+                        { name: '泰安市', value: '@ViewBag.taian' },
+                        { name: '莱芜市', value: '@ViewBag.laiwu' },
+                        { name: '滨州市', value: '@ViewBag.binzhou' },
+                        { name: '东营市', value: '@ViewBag.dongying' },
+                        { name: '德州市', value: '@ViewBag.dezhou' },
+                        { name: '聊城市', value: '@ViewBag.liaocheng' },
+                        { name: '菏泽市', value: '@ViewBag.heze' }
+			    ]
+			}
+        ]
+    };
+    myChart.setOption(option);
+</script>

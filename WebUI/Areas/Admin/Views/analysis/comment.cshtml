@@ -1,0 +1,103 @@
+﻿@model PagedList<WebUI.Areas.Admin.Controllers.analysisController.CommentInfos>
+@using Webdiyer.WebControls.Mvc;
+@{
+    ViewBag.Title = "评论意见-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item ">问卷分析</li>
+    <li class="breadcrumb-item active">评论意见</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fa fa-align-justify "></i> 评论意见</span>
+                    </div>
+
+                    <div class="card-block">
+                        <table class="table table-bordered table-striped table-condensed" style="font-size: 12px !important;">
+                            <thead>
+                                <tr>
+                                    <th style="font-size: 12px !important;">内容</th>
+                                    <th style="font-size: 12px !important;">用户</th>
+                                    <th style="font-size: 12px !important;">手机</th>
+                                    <th style="font-size: 12px !important;">时间</th>
+                                    <th style="font-size: 12px !important;">删除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td style="font-size: 12px !important;">@item.CommentDepict</td>
+                                            <td style="font-size: 12px !important;">@item.UserName</td>
+                                            <td style="font-size: 12px !important;">@item.UserPhone</td>
+                                            <td style="font-size: 12px !important;">@item.CommentDate</td>
+                                            <td style="font-size: 12px !important;"><a id="@item.CommentId" href="javascript:;" onclick="deletesub(this.id)"><i class="fa fa-trash"></i>&nbsp;删除</a></td>
+                                        </tr>
+                                    }
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                        <nav>
+                            @Html.Pager(
+                            Model,
+                            new PagerOptions
+                            {
+                                PageIndexParameterName = "pageIndx",
+                                NumericPagerItemCount = 5,
+                                ContainerTagName = "ul",
+                                CssClass = "pagination",
+                                CurrentPagerItemTemplate = "<li class='page-item active'><a class=\"page-link\" href=\"#\">{0}</a></li>",
+                                DisabledPagerItemTemplate = "<li class=\"page-item\"><a class=\"page-link\">{0}</a></li>",
+                                PagerItemTemplate = "<li>{0}</li>",
+                                PageIndexBoxId = "pageIndexBox",
+                                AutoHide = false,
+                                FirstPageText = "首页",
+                                LastPageText = "尾页",
+                                PrevPageText = "上一页",
+                                NextPageText = "下一页"
+                            })
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>
+<script>
+    function deletesub(id) {
+        if (confirm("是否删除？") == true) {
+            $.ajax({
+                url: "/Admin/analysis/cdelete",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        CommentId: id,
+                    }),
+                dataType: "JSON",
+                success: function (data) {
+                    if (data == "NO") {
+                        alert("操作失败");
+                        return;
+                    } else if (data == "OK") {
+                        alert("操作成功");
+                        window.location.href = location.href;
+                    }
+                }
+            });
+        }
+    }
+</script>

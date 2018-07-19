@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "新建题目-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item">问卷管理</li>
+    <li class="breadcrumb-item active">新建题目</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-edit"></i>新建题目
+                    </div>
+                    <div class="card-block">
+
+                        <div class="form-group">
+                            <div class="controls">
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon">题目描述</span>
+                                    <textarea id="SubjectDepict" class="form-control" placeholder="请输入选项描述" style="height:100px;"></textarea>
+                                </div>
+                                <br />
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon">题目类型</span>
+                                    <div class="form-control">
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <label class="radio-inline" for="inline-radio1">
+                                                    <input type="radio" id="inline-radio1" name="inline-radios"  value="1">单选
+                                                </label>
+                                                <label class="radio-inline" for="inline-radio2">
+                                                    <input type="radio" id="inline-radio2" name="inline-radios" value="2">多选
+                                                </label>
+                                                <label class="radio-inline" for="inline-radio3">
+                                                    <input type="radio" id="inline-radio3" name="inline-radios" value="3">文本
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button id="submit" class="btn btn-primary" style="cursor:pointer">提交</button>
+                            <a href="" class="btn btn-primary">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>
+@Html.Hidden("PapersId")
+<script>
+    var SubjectDepict = $("#SubjectDepict");
+    var PapersId = $("#PapersId");
+    var submit = $("#submit");
+    submit.click(function () {
+        var SubjectType = $('input:radio[name="inline-radios"]:checked').val();
+        if (SubjectDepict.val() == null || SubjectDepict.val() == "") {
+            alert("请输入描述");
+        } else if (SubjectType == null || SubjectType == "") {
+            alert("请选择类型");
+        }
+        else {
+           
+            $.ajax({
+                url: "/Admin/Subject/add",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        SubjectDepict: SubjectDepict.val(),
+                        SubjectType: SubjectType,
+                        PapersId: PapersId.val(),
+
+                    }),
+                dataType: "JSON",
+                success: function (data) {
+                    if (data == "NO") {
+                        alert("提交失败");
+                        return;
+                    } else if (data == "OK") {
+                        alert("提交成功");
+                        window.location.href = "/Admin/Subject?PapersId=" + PapersId.val();
+                    }
+                }
+            });
+        }
+    })
+</script>

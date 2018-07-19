@@ -1,0 +1,282 @@
+﻿@model IList<WebUI.Areas.Admin.Controllers.analysisController.CommentInfos>
+@{
+    ViewBag.Title = "点赞分析-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/js/echarts-all.js"></script>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item ">问卷分析</li>
+    <li class="breadcrumb-item active"><a href="#dt">图表分析</a>  </li>
+    <li class="breadcrumb-item active"><a href="#fx">名次排行</a>  </li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header" id="dt">
+                        <span><i class="fa fa-align-justify " id="dt"></i>柱状图分析</span>
+                    </div>
+
+                    <div class="card-block">
+                        <div id="mains" class="col-lg-12" style="height:500px;"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-7">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fa fa-align-justify "></i>地图分析</span>
+                    </div>
+
+                    <div class="card-block">
+                        <div id="main" class="col-lg-12" style="height:500px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fa fa-align-justify "></i>点赞饼图</span>
+                    </div>
+
+                    <div class="card-block">
+                        <div id="main2" class="col-lg-12" style="height:500px;"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--/.col-->
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header" id="fx">
+                        <span><i class="fa fa-align-justify "></i>名次排行</span>
+                    </div>
+
+                    <div class="card-block">
+                        <table class="table table-bordered table-striped table-condensed" style="font-size: 12px !important;">
+                            <thead>
+                                <tr style="font-size: 12px !important;">
+                                    <th>名次</th>
+                                    <th>用户</th>
+                                    <th>评论</th>
+                                    <th>手机</th>
+                                    <th>赞数</th>
+                                    <th>加票</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    EFClassLibrary.QuestionnaireDBEntities db = new EFClassLibrary.QuestionnaireDBEntities();
+                                    int i = 1;
+                                    foreach (var item in Model)
+                                    {
+                                        <tr style="font-size: 12px !important;">
+                                            <td style="font-size: 12px !important;">@i</td>
+                                            <td style="font-size: 12px !important;">@item.UserName</td>
+                                            <td>
+                                                <p style="font-size: 12px !important;">@item.CommentDepict</p>
+                                            </td>
+                                            <td style="font-size: 12px !important;">@item.UserPhone</td>
+                                            <td style="font-size: 12px !important;">@item.LaudCount</td>
+                                            <td style="font-size: 12px !important;">
+                                                <input id="@{@item.CommentId}txt" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" /> <a id="" href="javascript:;" onclick="jiapiao('@item.CommentId','@{@item.CommentId}txt')">加票</a>
+                                                （累计加票：@{ var jcout = db.LaudInfo.Where(l => l.City == "人工加票" && l.CommentId == item.CommentId).Count(); ViewBag.jcount = jcout; } @ViewBag.jcount）
+                                            </td>
+                                        </tr>
+                                                 i++;
+                                    }
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+
+
+        @Html.Hidden("lcount")
+    </div>
+</div>
+<script>
+    var lcount = $("#lcount");
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: function (a) {
+                return a[2];
+            }
+        },
+        dataRange: {
+            min: 0,
+            max: lcount.val(),
+            color: ['#005C86', '#F0F0F0'],
+            text: ['高', '低'],           // 文本，默认为数值文本
+            calculable: true
+        },
+        series: [
+			{
+			    name: '数据名称',
+			    type: 'map',
+			    mapType: '山东',
+			    selectedMode: 'single',
+			    itemStyle: {
+			        normal: { label: { show: true } },
+			        emphasis: { label: { show: true } }
+			    },
+			    data: [
+				        { name: '济南市', value: '@ViewBag.jinan' },
+                        { name: '青岛市', value: '@ViewBag.qingdao' },
+                        { name: '烟台市', value: '@ViewBag.yantai' },
+                        { name: '潍坊市', value: '@ViewBag.weifang' },
+                        { name: '日照市', value: '@ViewBag.rizhao' },
+                        { name: '威海市', value: '@ViewBag.weihai' },
+                        { name: '临沂市', value: '@ViewBag.linyin' },
+                        { name: '枣庄市', value: '@ViewBag.zaozhuang' },
+                        { name: '淄博市', value: '@ViewBag.zibo' },
+                        { name: '济宁市', value: '@ViewBag.jining' },
+                        { name: '泰安市', value: '@ViewBag.taian' },
+                        { name: '莱芜市', value: '@ViewBag.laiwu' },
+                        { name: '滨州市', value: '@ViewBag.binzhou' },
+                        { name: '东营市', value: '@ViewBag.dongying' },
+                        { name: '德州市', value: '@ViewBag.dezhou' },
+                        { name: '聊城市', value: '@ViewBag.liaocheng' },
+                        { name: '菏泽市', value: '@ViewBag.heze' }
+			    ]
+			}
+        ]
+    };
+    myChart.setOption(option);
+
+    var myCharts = echarts.init(document.getElementById('mains'));
+    var options = {
+        title: {
+            text: '柱状图分析',
+            subtext: '从小到大排序'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['点赞数', '加票数']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: { show: true },
+                dataView: { show: false, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+
+        calculable: true,
+
+        xAxis: [
+            {
+                type: 'category',
+                data: [@Html.Raw(ViewBag.names)]
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '点赞数',
+                type: 'bar',
+                data: [@ViewBag.lands],
+            },
+            {
+                name: '加票数',
+                type: 'bar',
+                data: [@ViewBag.jiapiaos],
+            }
+        ]
+    };
+    myCharts.setOption(options);
+
+    var myChart2 = echarts.init(document.getElementById('main2'));
+   var  option2 = {
+        title: {
+            text: '点赞饼状图分析',
+            x: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['原始赞数', '人工加票']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: { show: true },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+        calculable: true,
+        series: [
+            {
+                name: '点赞总数(@ViewBag.zh)',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    { value: @ViewBag.ys , name: '原始赞数' },
+                    { value: @ViewBag.rg , name: '人工加票' }
+                  
+                ]
+            }
+        ]
+    };
+
+   myChart2.setOption(option2);
+    function jiapiao(id, txtid) {
+        var iid = document.getElementById(txtid).value;
+        $.ajax({
+            url: "/Admin/analysis/jiapiao",
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(
+                {
+                    id: id,
+                    iid: iid,
+
+                }),
+            dataType: "JSON",
+            success: function (data) {
+                if (data == "NO") {
+                    alert("加票失败");
+                    return;
+                } else if (data == "OK") {
+                    alert("加票成功");
+                    window.location.href = location.href;
+                }
+            }
+        });
+    }
+
+
+</script>

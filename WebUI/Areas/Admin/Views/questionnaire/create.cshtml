@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "新建问卷-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item">问卷管理</li>
+    <li class="breadcrumb-item active">新建问卷</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-edit"></i>新建问卷
+                    </div>
+                    <div class="card-block">
+
+                        <div class="form-group">
+                            <div class="controls">
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon">问卷标题</span>
+                                    <input id="PapersTitle" class="form-control" size="16" type="text" placeholder="请输入问卷标题">
+                                </div>
+                                <br />
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon">开始日期</span>
+                                    <input id="StartDate" class="form-control" size="16" type="text" placeholder="请选择开始日期" onclick="WdatePicker({ minDate: '@DateTime.Now' })" readonly="readonly" style="background-color:#fff">
+                                </div>
+                                <br />
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon">结束日期</span>
+                                    <input id="EndDate" class="form-control" size="16" type="text" placeholder="请选择结束日期" onclick="WdatePicker({minDate: '@DateTime.Now'} )" readonly="readonly" style="background-color:#fff">
+                                </div>
+                                <br />
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon">问卷描述</span>
+                                    <textarea id="PapersDepict" class="form-control" placeholder="请输入问卷描述"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button id="submit" class="btn btn-primary" style="cursor:pointer">提交</button>
+                            <a href="" class="btn btn-primary">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>
+<script>
+    var PapersTitle = $("#PapersTitle");
+    var StartDate = $("#StartDate");
+    var EndDate = $("#EndDate");
+    var PapersDepict = $("#PapersDepict");
+    var submit = $("#submit");
+    submit.click(function () {
+        if (PapersTitle.val() == null || PapersTitle.val() == "") {
+            alert("请输入标题");
+        }else if(StartDate.val()==null||StartDate.val()==""){
+            alert("请选择开始日期");
+        }
+        else if(EndDate.val()==null||EndDate.val()==""){
+            alert("请选择结束日期");
+        }
+        else if (PapersDepict.val() == null || PapersDepict.val() == "") {
+            alert("请输入描述");
+        } else {
+            $.ajax({
+                url: "/Admin/questionnaire/add",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        PapersTitle: PapersTitle.val(),
+                        PapersDepict: PapersDepict.val(),
+                        StartDate:StartDate.val(),
+                        EndDate:EndDate.val()
+                    }),
+                dataType: "JSON",
+                success: function (data) {
+                    if (data == "NO") {
+                        alert("提交失败");
+                        return;
+                    } else if (data == "OK") {
+                        alert("提交成功");
+                        window.location.href = "/Admin/questionnaire/Index/";
+                    }
+                }
+            });
+        }
+    })
+</script>

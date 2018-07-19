@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuestionnaireDBModelStoreContainer" CdmEntityContainer="QuestionnaireDBEntities">
+    <EntitySetMapping Name="AdminInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.AdminInfo">
+        <MappingFragment StoreEntitySet="AdminInfo">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminPwd" ColumnName="AdminPwd" />
+          <ScalarProperty Name="AdminType" ColumnName="AdminType" />
+          <ScalarProperty Name="AdminDate" ColumnName="AdminDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.CommentInfo">
+        <MappingFragment StoreEntitySet="CommentInfo">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="CommentDepict" ColumnName="CommentDepict" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LaudInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.LaudInfo">
+        <MappingFragment StoreEntitySet="LaudInfo">
+          <ScalarProperty Name="LaudId" ColumnName="LaudId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="LaudDate" ColumnName="LaudDate" />
+          <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OptionInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.OptionInfo">
+        <MappingFragment StoreEntitySet="OptionInfo">
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="OptionContent" ColumnName="OptionContent" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="OptionDate" ColumnName="OptionDate" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PapersInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.PapersInfo">
+        <MappingFragment StoreEntitySet="PapersInfo">
+          <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+          <ScalarProperty Name="PapersTitle" ColumnName="PapersTitle" />
+          <ScalarProperty Name="PapersDepict" ColumnName="PapersDepict" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="PapersDate" ColumnName="PapersDate" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.SubjectInfo">
+        <MappingFragment StoreEntitySet="SubjectInfo">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectDepict" ColumnName="SubjectDepict" />
+          <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+          <ScalarProperty Name="SubjectType" ColumnName="SubjectType" />
+          <ScalarProperty Name="SubjectDate" ColumnName="SubjectDate" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserDate" ColumnName="UserDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoteInfo">
+      <EntityTypeMapping TypeName="QuestionnaireDBModel.VoteInfo">
+        <MappingFragment StoreEntitySet="VoteInfo">
+          <ScalarProperty Name="VoteId" ColumnName="VoteId" />
+          <ScalarProperty Name="PapersId" ColumnName="PapersId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="VoteDepict" ColumnName="VoteDepict" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="VoteDate" ColumnName="VoteDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

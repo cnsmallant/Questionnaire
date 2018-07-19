@@ -1,0 +1,336 @@
+@font-face
+{
+    font-family: 'iconfont';
+    src: url('font/font.eot');
+    src: url('font/font.eot?#iefix') format('embedded-opentype'),
+    url('font/font.woff') format('woff'),
+    url('font/font.ttf') format('truetype'),
+    url('font/font.svg#iconfont') format('svg');
+}
+.mod-a-form
+{
+    position: relative;
+    text-align: center;
+    background: #fff;
+}
+.mod-a-form .f-placehodel
+{
+    padding: 25px 0;
+}
+.f-setting .ui-tab
+{
+    min-height: 150px;
+}
+.f-setting .ui-tab
+{
+    min-height: 150px;
+}
+.mod-a-form .iconfont
+{
+    font-family: 'iconfont';
+    font-size: 12px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .1px;
+}
+.mod-a-form .f-form-page
+{
+    font-size: 14px;
+    color: #666;
+}
+.mod-a-form .f-form-page *
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.mod-a-form .f-form-page .clearfix
+{
+    *zoom: 1;
+}
+.mod-a-form .f-form-page .clearfix:before,
+.mod-a-form .f-form-page .clearfix:after
+{
+    line-height: 0;
+    display: table;
+    content: '';
+}
+.mod-a-form .f-form-page .clearfix:after
+{
+    clear: both;
+}
+.mod-a-form .f-form-page .f-btn
+{
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 30px;
+    text-decoration: none;
+    color: #666;
+    border: #a8acad 1px solid;
+    border-radius: 3px;
+}
+.mod-a-form .f-form-page .f-btn i,
+.mod-a-form .f-form-page .f-btn span,
+.mod-a-form .f-form-page .f-btn em
+{
+    vertical-align: middle;
+}
+.mod-a-form .f-form-page .f-btn i
+{
+    font-size: 16px;
+    margin-right: 5px;
+}
+.mod-a-form .f-form-page .f-btn:hover
+{
+    color: #3591d4;
+    background: #fff;
+}
+.mod-a-form .f-form-page ul
+{
+    list-style: none;
+}
+.mod-a-form .f-form-page em
+{
+    font-style: normal;
+}
+.mod-a-form .f-form-page h1
+{
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+}
+.mod-a-form .f-form-page h2
+{
+    font-size: 14px;
+}
+.mod-a-form .f-form-page h2 em.tt
+{
+    color:#330;font-size:16px;
+}
+.mod-a-form .f-form-page h2 span
+{
+    color: #FFB5B5;
+}
+.mod-a-form .f-form-page .f-form-title
+{
+    color:#555;
+    background: #efefef;
+    padding:5px 20px 5px 20px;
+}
+.mod-a-form .f-form-page .f-subtitle
+{
+    text-align: center;
+}
+.mod-a-form .f-form-page .f-select
+{
+    font-size: 14px;
+    position: relative;
+    z-index: 9;
+    height: 28px;
+    padding: 0 5px;
+    cursor: pointer;
+    color: #666;
+    border: #a8acad 1px solid;
+    border-radius: 4px;
+    background: #fefefe;
+    background: -webkit-linear-gradient(top, #fefefe, #f3f3f3);
+    background:         linear-gradient(top, #fefefe, #f3f3f3);
+}
+.mod-a-form .f-form-page .f-select em
+{
+    float: left;
+    overflow: hidden;
+    margin: 7px 0 0 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 91%;
+}
+.mod-a-form .f-form-page .f-select i
+{
+    font-size: 18px;
+    float: right;
+    width: 18px;
+    margin: 3px 0 0 0;
+}
+.mod-a-form .f-form-page .f-select .f-option-list
+{
+    position: absolute;
+    top: 31px;
+    left: 0;
+    display: none;
+    overflow: hidden;
+    width: 100%;
+    border: #1a8fda 1px solid;
+    border-radius: 4px;
+    background: #fff;
+}
+.mod-a-form .f-form-page .f-option-list li
+{
+    padding:6px 8px;
+    cursor: pointer;
+}
+.mod-a-form .f-form-page .f-option-list li:hover
+{
+    background: #e8f4fb;
+}
+.mod-a-form .f-form-page .f-form-view .f-title
+{
+    padding: 10px 15px;
+    text-align: center;
+    background: #f7f7f7;
+}
+.mod-a-form .f-form-page .f-form-view .f-title h1
+{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 0;
+}
+.mod-a-form .f-form-page .f-form-item
+{
+    position: relative;
+    padding: 15px 15px;
+    text-align: left;
+    border-bottom: #e3e3e3 1px dashed;
+}
+.mod-a-form .f-form-page .f-form-item h2
+{
+    font-size: 14px;
+    font-weight: bold;
+	
+}
+.mod-a-form .f-form-page .f-form-item .f-item-wrap
+{
+    padding: 10px 0 5px 0;
+}
+.mod-a-form .f-form-page .f-form-item .f-item-wrap .f-option-list
+{
+    overflow: hidden;
+    border: #1a8fda 1px solid;
+    border-radius: 4px;
+    background: #fff;
+}
+.mod-a-form .f-form-page .f-form-item .f-control
+{
+    margin: 10px 0 0 0;
+}
+.f-form-page .f-form-item .f-control label {
+    display: -webkit-flex;
+    display: flex; }
+.f-form-page .f-form-item .f-control label span {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    -webkit-flex: 1;
+    flex: 1; }
+.mod-a-form .f-form-page .f-form-item .f-chengge-checked
+{
+    display: inline-block;
+    display: none\0;
+    width: 25px;
+}
+.mod-a-form .f-form-page .f-form-item .f-chengge-checked i
+{
+    font-size: 20px;
+}
+.mod-a-form .f-form-page .f-form-item .f-control label input
+{
+    display: none;
+    display: inline\0;
+    *display: inline;
+}
+.mod-a-form .f-form-page .f-form-item .f-control label input + em .checken-01
+{
+    display: inline-block;
+}
+.mod-a-form .f-form-page .f-form-item .f-control label input + em .checken-02
+{
+    display: none;
+}
+.mod-a-form .f-form-page .f-form-item .f-control label input:checked + em .checken-01
+{
+    display: none;
+}
+.mod-a-form .f-form-page .f-form-item .f-control label input:checked + em .checken-02
+{
+    font-weight: bold;
+    display: inline-block;
+    color: #ed514d;
+}
+.mod-a-form .f-form-page .f-form-item .f-control .f-img,
+.mod-a-form .f-form-page .f-form-item .f-control .f-img img
+{
+    width: 60px;
+    height: 60px;
+}
+.mod-a-form .f-form-page .f-form-item .f-control .f-img
+{
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    vertical-align: top;
+    *display: inline;
+    *zoom: 1;
+}
+.mod-a-form .f-form-page .f-form-item .f-control .f-img img
+{
+    display: block;
+}
+.mod-a-form .f-form-page .f-form-item .f-control .f-radio,
+.mod-a-form .f-form-page .f-form-item .f-control .f-checkbox
+{
+    margin: 0 5px 0 0;
+}
+.mod-a-form .f-form-page .f-form-item .f-control .f-input,
+.mod-a-form .f-form-page .f-form-item .f-control .f-textarea
+{
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 100%;
+    border: #a8acad 1px solid;
+    border-radius: 3px;
+    box-shadow: none;
+}
+.mod-a-form .f-form-page .f-form-item .f-control .f-input
+{
+    height: 25px;
+    padding: 2px 5px;
+}
+.mod-a-form .f-form-page .f-form-item .f-control .f-textarea
+{
+    height: 90px;
+    padding: 2px 5px;
+}
+.mod-a-form .f-form-page .f-line
+{
+    height: 0;
+    border: none;
+    /*border-top: #666 1px dashed;*/
+    background: #fff;
+}
+.mod-a-form .f-form-page .f-btn-wrap
+{
+    padding: 15px;
+}
+.mod-a-form .f-form-page .f-btn-wrap a
+{
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: #ed514d;
+}
+
+.f-btn-tj a
+{	width:150px;
+	float:right;
+    display: block;
+    padding: 12px 0;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: #ed514d;
+
+}
+

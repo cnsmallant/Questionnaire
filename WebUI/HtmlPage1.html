@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    
+
+    <script src="js/echarts-all.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+</body>
+
+</html>
+
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        title: {
+            text: '山东',
+            subtext: '-。-'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: function (a) {
+                return a[2];
+            }
+        },
+        dataRange: {
+            min: 0,
+            max: 1000,
+            color: ['blue', 'skyblue'],
+            text: ['高', '低'],           // 文本，默认为数值文本
+            calculable: true
+        },
+        series: [
+			{
+			    name: '数据名称',
+			    type: 'map',
+			    mapType: '山东',
+			    selectedMode: 'single',
+			    itemStyle: {
+			        normal: { label: { show: true } },
+			        emphasis: { label: { show: true } }
+			    },
+			    data: [
+				        { name: '济南市', value: 1500 },
+                        { name: '青岛市', value: 10 },
+                        { name: '烟台市', value: 20 },
+                        { name: '潍坊市', value: 30 },
+                        { name: '日照市', value: 40 },
+                        { name: '威海市', value: 41 },
+                        { name: '临沂市', value: 15 },
+                        { name: '枣庄市', value: 15 },
+                        { name: '淄博市', value: 15 },
+                        { name: '济宁市', value: 25 },
+                        { name: '泰安市', value: 35 },
+                        { name: '莱芜市', value: 35 },
+                        { name: '滨州市', value: 35 },
+                        { name: '东营市', value: 35 },
+                        { name: '德州市', value: 35 },
+                        { name: '聊城市', value: 35 },
+                        { name: '菏泽市', value: 35 }
+			    ]
+			}
+        ]
+    };
+    myChart.setOption(option);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //var uploadedDataURL = "js/shandong.json";
+
+    //function randomData() {
+    //    return Math.round(Math.random() * 10000);
+    //}
+
+
+    //function showProvince() {
+    //    var name = 'shandong';
+
+    //    // myChart.showLoading();
+
+    //    $.get(uploadedDataURL, function (geoJson) {
+
+    //        // myChart.hideLoading();
+
+    //        echarts.registerMap(name, geoJson);
+
+    //        myChart.setOption(option = {
+
+    //            title: {
+    //                text: "河南省各地市工程延误数量分布",
+    //                left: 'center'
+    //            },
+    //            tooltip: {
+    //                trigger: 'item'
+    //            },
+
+    //            visualMap: {
+    //                min: 0,
+    //                max: 100,
+    //                left: 'left',
+    //                top: 'bottom',
+    //                text: ['高', '低'], // 文本，默认为数值文本
+    //                calculable: true
+    //            },
+    //            toolbox: {
+    //                show: true,
+    //                orient: 'vertical',
+    //                left: 'right',
+    //                top: 'center',
+    //                feature: {
+    //                    dataView: { readOnly: false },
+    //                    restore: {},
+    //                    saveAsImage: {}
+    //                }
+    //            },
+    //            series: [{
+    //                type: 'map',
+    //                mapType: name,
+    //                label: {
+    //                    normal: {
+    //                        show: true
+    //                    },
+    //                    emphasis: {
+    //                        textStyle: {
+    //                            color: '#fff'
+    //                        }
+    //                    }
+    //                },
+    //                itemStyle: {
+
+    //                    normal: {
+    //                        borderColor: '#389BB7',
+    //                        areaColor: '#fff',
+    //                    },
+    //                    emphasis: {
+    //                        areaColor: '#389BB7',
+    //                        borderWidth: 0
+    //                    }
+    //                },
+    //                animation: false,
+
+    //                data: [
+    //                    { name: '济南市', value: 100 },
+    //                    { name: '青岛市', value: 10 },
+    //                    { name: '烟台市', value: 20 },
+    //                    { name: '潍坊市', value: 30 },
+    //                    { name: '日照市', value: 40 },
+    //                    { name: '威海市', value: 41 },
+    //                    { name: '临沂市', value: 15 },
+    //                    { name: '枣庄市', value: 15 },
+    //                    { name: '淄博市', value: 15 },
+    //                    { name: '济宁市', value: 25 },
+    //                    { name: '泰安市', value: 35 },
+    //                    { name: '莱芜市', value: 35 },
+    //                    { name: '滨州市', value: 35 },
+    //                    { name: '东营市', value: 35 },
+    //                    { name: '德州市', value: 35 },
+    //                    { name: '聊城市', value: 35 },
+    //                    { name: '菏泽市', value: 35 },
+    //                ]
+
+    //            }],
+
+    //        });
+    //    });
+    //}
+
+    //var currentIdx = 0;
+
+    //showProvince();
+
+</script>

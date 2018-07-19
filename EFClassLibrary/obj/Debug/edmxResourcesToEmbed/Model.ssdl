@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuestionnaireDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="AdminInfo">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminName" Type="varchar" MaxLength="50" />
+    <Property Name="AdminPwd" Type="varchar" MaxLength="50" />
+    <Property Name="AdminType" Type="int" />
+    <Property Name="AdminDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CommentInfo">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentDepict" Type="text" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" />
+    <Property Name="PapersId" Type="int" />
+    <Property Name="CommentDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LaudInfo">
+    <Key>
+      <PropertyRef Name="LaudId" />
+    </Key>
+    <Property Name="LaudId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentId" Type="int" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="255" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="LaudDate" Type="datetime" />
+    <Property Name="PapersId" Type="int" />
+  </EntityType>
+  <EntityType Name="OptionInfo">
+    <Key>
+      <PropertyRef Name="OptionId" />
+    </Key>
+    <Property Name="OptionId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OptionContent" Type="varchar" MaxLength="225" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="OptionDate" Type="datetime" />
+    <Property Name="AdminId" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PapersInfo">
+    <Key>
+      <PropertyRef Name="PapersId" />
+    </Key>
+    <Property Name="PapersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PapersTitle" Type="varchar" MaxLength="225" />
+    <Property Name="PapersDepict" Type="text" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="PapersDate" Type="datetime" />
+    <Property Name="AdminId" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SubjectInfo">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectDepict" Type="text" />
+    <Property Name="PapersId" Type="int" />
+    <Property Name="SubjectType" Type="int" />
+    <Property Name="SubjectDate" Type="datetime" />
+    <Property Name="AdminId" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="225" />
+    <Property Name="UserPhone" Type="varchar" MaxLength="50" />
+    <Property Name="UserDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VoteInfo">
+    <Key>
+      <PropertyRef Name="VoteId" />
+    </Key>
+    <Property Name="VoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PapersId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="OptionId" Type="varchar" MaxLength="50" />
+    <Property Name="VoteDepict" Type="text" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+    <Property Name="VoteDate" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="QuestionnaireDBModelStoreContainer">
+    <EntitySet Name="AdminInfo" EntityType="Self.AdminInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommentInfo" EntityType="Self.CommentInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LaudInfo" EntityType="Self.LaudInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OptionInfo" EntityType="Self.OptionInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PapersInfo" EntityType="Self.PapersInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectInfo" EntityType="Self.SubjectInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VoteInfo" EntityType="Self.VoteInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

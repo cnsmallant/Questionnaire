@@ -1,0 +1,83 @@
+﻿@model IList<EFClassLibrary.OptionInfo>
+
+@{
+    ViewBag.Title = "选项列表-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item">问卷管理</li>
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Subject", new { PapersId = ViewBag.PapersId })">题目管理</a></li>
+    <li class="breadcrumb-item active">选项列表</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fa fa-align-justify "></i>选项列表</span>
+
+                        <span><a href="@Url.Action("create", "Option", new { SubjectId = ViewBag.SubjectId })" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; 新建</a></span>
+
+                    </div>
+
+                    <div class="card-block text-center">
+                        <table class="table table-bordered table-striped table-condensed text-center">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">选项描述</th>
+                                    <th class="text-center">录入时间</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.OptionContent</td>
+                                            <td>@item.OptionDate</td>
+                                            <td>
+                                                <a href="@Url.Action("modify", "Option", new { OptionId = item.OptionId })"><i class="fa fa-edit"></i>&nbsp;修改</a>
+                                                <a id="@item.OptionId" href="javascript:;" onclick="deletesub(this.id)"><i class="fa fa-trash"></i>&nbsp;删除</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>
+<script>
+    function deletesub(id) {
+        if (confirm("是否删除？") == true) {
+            $.ajax({
+                url: "/Admin/Option/delete",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        OptionId: id,
+                    }),
+                dataType: "JSON",
+                success: function (data) {
+                    if (data == "NO") {
+                        alert("操作失败");
+                        return;
+                    } else if (data == "OK") {
+                        alert("操作成功");
+                        window.location.href = location.href;
+                    }
+                }
+            });
+        }
+    }
+</script>

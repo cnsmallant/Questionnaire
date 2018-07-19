@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuestionnaireDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="QuestionnaireDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminInfo" EntityType="QuestionnaireDBModel.AdminInfo" />
+    <EntitySet Name="CommentInfo" EntityType="QuestionnaireDBModel.CommentInfo" />
+    <EntitySet Name="LaudInfo" EntityType="QuestionnaireDBModel.LaudInfo" />
+    <EntitySet Name="OptionInfo" EntityType="QuestionnaireDBModel.OptionInfo" />
+    <EntitySet Name="PapersInfo" EntityType="QuestionnaireDBModel.PapersInfo" />
+    <EntitySet Name="SubjectInfo" EntityType="QuestionnaireDBModel.SubjectInfo" />
+    <EntitySet Name="UserInfo" EntityType="QuestionnaireDBModel.UserInfo" />
+    <EntitySet Name="VoteInfo" EntityType="QuestionnaireDBModel.VoteInfo" />
+  </EntityContainer>
+  <EntityType Name="AdminInfo">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminType" Type="Int32" />
+    <Property Name="AdminDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CommentInfo">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommentDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PapersId" Type="Int32" />
+    <Property Name="CommentDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="LaudInfo">
+    <Key>
+      <PropertyRef Name="LaudId" />
+    </Key>
+    <Property Name="LaudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommentId" Type="Int32" />
+    <Property Name="IPAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LaudDate" Type="DateTime" Precision="3" />
+    <Property Name="PapersId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="OptionInfo">
+    <Key>
+      <PropertyRef Name="OptionId" />
+    </Key>
+    <Property Name="OptionId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OptionContent" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="OptionDate" Type="DateTime" Precision="3" />
+    <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PapersInfo">
+    <Key>
+      <PropertyRef Name="PapersId" />
+    </Key>
+    <Property Name="PapersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PapersTitle" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="PapersDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="PapersDate" Type="DateTime" Precision="3" />
+    <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SubjectInfo">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PapersId" Type="Int32" />
+    <Property Name="SubjectType" Type="Int32" />
+    <Property Name="SubjectDate" Type="DateTime" Precision="3" />
+    <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VoteInfo">
+    <Key>
+      <PropertyRef Name="VoteId" />
+    </Key>
+    <Property Name="VoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PapersId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="OptionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VoteDepict" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VoteDate" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,323 @@
+﻿@model IList<EFClassLibrary.SubjectInfo>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html class="kz-pc">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0,width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="威海信息港,威海门户网站，威海网上信息中心、恋爱、婚恋、爱情交友中心、威海新闻中心、威海电子商务中心、威海交友平台、威海游戏平台。作为山东省威海市的门户网站，威海信息港成立于1997年，是威海规模最大、技术实力最强、内容最丰富、点击率最高的门户网站。经过多年的发展，威海信息港已经建成5大类、28个小类、40多个频道和栏目的内容，威海信息港已经成为山东乃至全国的重要站点，成为全国了解威海的窗口，成为威海人民爱威海的网上驿站。">
+    <meta name="author" content="威海信息港">
+    <meta name="keyword" content="威海,信息港,威海社区,威海房产,威海房地产,威海房产网,威海汽车,威海汽车网,威海旅游,威海人才,威海招聘,出国劳务,威海新闻,威海资讯,威海游戏,保皇游戏,FLASH游戏,威海交友,征婚,交友,情缘,恋爱,网友活动,同学录,网上聊天,免费电影,极品影院,威海供求信息,威海分类信息,威海便民,威海财经,威海美食,威海黄页,威海问答,健康问答,法律问答,健康,威海家装,医保查询,公积金查询,威海汽车时刻表,威海火车,威海轮船,威海行风热线,网上商城,上网导航,汽车团购,房产团购,家装团购,招聘会,毕业求职,3G,地图,网络电视,法律,教育,网通,联通,宽带,杀毒,短信,悦铃,失物招领 ">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <title>@ViewBag.pap.PapersTitle</title>
+    <link rel="stylesheet" type="text/css" href="/Areas/m/images/liuyan.css">
+    <link rel="stylesheet" type="text/css" href="/Areas/m/images/diaocha.css">
+    <link rel="stylesheet" type="text/css" href="/Areas/m/images/pop.css">
+    <script src="~/assets/js/libs/jquery.min.js"></script>
+    <script>
+        function browserRedirect() {
+
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            } else {
+                var url = window.location.href;
+                if (url.indexOf("#") >= 0) { //判断url地址中是否包含link字符串
+                    var arr = new Array();
+                    arr = url.split("#");
+                    window.location.href = "http://tp.whinfo.net/#"+arr[1];
+                } else {
+                    window.location.href = "http://tp.whinfo.net/";
+
+                }
+
+            }
+        }
+
+        browserRedirect();
+    </script>
+</head>
+<body class="t3">
+
+    <div class="kz-pc-header kz-b-c-t kz-f-c-tc " style="margin-bottom:0">
+        <div class="kz-pc-header-inner">
+            <a data-pc-logo="" href="https://www.whinfo.net.cn/"><img src="http://www.whinfo.net.cn/images/whinfo-b.png"></a>
+            <a data-pc-title="" href="#" style="max-width: 256px;">改版问卷调查</a>
+            <!--<span data-pc-menu="" style=" float:right"><a href="http://www.whinfo.net.cn">进入新版首页</a></span>-->
+        </div>
+    </div>
+    <!--<div class="kz-pc-side-nav fixed">
+         <div id="qr-code-inner"><img src="/Areas/m/images/zhmbewm.jpg"><p>扫描二维码<br>用手机访问本站</p></div>
+    </div>-->
+
+
+
+    <div id="phone-main" class="phone-main kz-pc-main main">
+
+        <div class="page-w" style="background-color:tranparent;background-size:;">
+            <div id="page-content" class="page-content">
+                <h2 class="new-title sys-title-1">
+                    <a href="javascript:;"></a>
+                    <img src="/Areas/m/images/ad.jpg">
+                </h2>
+                <div class="mod mod-text ">
+                    <div data-role="line">
+                        <div data-role="line"><span style="font-size: 16px;">@ViewBag.pap.PapersDepict</span><br></div>
+                        <div data-role="line" style="text-align:right"><a href="http://www.whinfo.net.cn" style="color:#c30; text-decoration:none">< 马上体验新版</a></div>
+                    </div>
+                </div>
+                <div class="mod mod-a-form">
+                    <div class="f-form-page">
+                        <div class="f-form-title">
+                            <h1>投票问卷</h1>
+                            <p class="f-subtitle"></p>
+                        </div>
+                        @{
+                            int i = 1;
+                            ViewBag.cou = Model.Count;
+                            foreach (var item in Model)
+                            {
+
+                                if (item.SubjectType == 1)
+                                {
+                                    <div class="f-form-item">
+                                        <h2><em>@{@i}.@{@item.SubjectDepict}（单选） </em><span>*</span></h2>
+                                        <div class="f-item-wrap">
+                                            @{
+
+                                    EFClassLibrary.QuestionnaireDBEntities db = new EFClassLibrary.QuestionnaireDBEntities();
+                                    var list = db.OptionInfo.Where(o => o.SubjectId == item.SubjectId).OrderBy(o => o.OptionDate).ToList();
+                                    foreach (var items in list)
+                                    {
+                                        <div class="f-control" data-type="list">
+                                            <label data-lid="0">
+                                                <input type="radio" class="f-radio" name="@item.SubjectId">
+                                                <em id="@items.OptionId" class="f-chengge-checked" onclick="select(this.id)">
+                                                    <i class="iconfont checken-01"></i>
+                                                    <i class="iconfont checken-02"></i>
+                                                </em>
+                                                <span>@items.OptionContent</span>
+                                            </label>
+                                        </div>
+                                    }
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                else if (item.SubjectType == 2)
+                                {
+
+                                    <div class="f-form-item" data-name="id_checkbox" data-id="5" data-required="true">
+                                        <h2><em>@{@i}.@{@item.SubjectDepict}（多选） </em><span>*</span></h2>
+                                        <div class="f-item-wrap">
+                                            @{
+
+                                    EFClassLibrary.QuestionnaireDBEntities db = new EFClassLibrary.QuestionnaireDBEntities();
+                                    var list = db.OptionInfo.Where(o => o.SubjectId == item.SubjectId).OrderBy(o => o.OptionDate).ToList();
+                                    foreach (var items in list)
+                                    {
+                                        <div class="f-control" data-type="list">
+                                            <label data-lid="0">
+                                                <input type="checkbox" class="f-checkbox">
+                                                <em id="@items.OptionId" class="f-chengge-checked" onclick="select(this.id)">
+                                                    <i class="iconfont checken-01"></i>
+                                                    <i class="iconfont checken-02"></i>
+                                                </em>
+                                                <span>@items.OptionContent</span>
+                                            </label>
+                                        </div>
+                                    }
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                }
+                                i++;
+                            }
+
+                        }
+                        <div class="f-btn-wrap">
+                            <a id="SubmitVote" href="javascript:;">提交表单</a>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+                <div class="mod mod-text " id="pl">
+                    <div data-role="line"><img src="/Areas/m/images/write.png" width="30">&nbsp;写下您对新版的意见建议<br>将有可能获得<span class="cy-number">500</span>元、<span class="cy-number">100</span>元、<span class="cy-number">50</span>元不等的开版红包哦! <span style="font-size:12px;float:right;margin-top:10px;color:#ed514d">活动截止日期：2017-7-12</span></div>
+
+                </div>
+                <div class="mod mod-changyan toolbar-ad" id="pinglun">
+                    <div id="pinglun_cot">
+
+                        <div class="module-cmt-header">
+
+
+                            <div class="section-cbox-w">
+                                <div class="cbox-block-w clear-g">
+
+                                    <div node-type="login-select" class="block-post-w">
+                                        <!-- 放置cbox初始状态 -->
+                                        <div class="module-cmt-box">
+                                            <!-- 展开状态 -->
+                                            <div class="post-wrap-w">
+
+                                                <div node-type="post-wrap-main" class="post-wrap-main">
+
+                                                    <div class="wrap-area-w">
+                                                        <div class="area-textarea-w">
+                                                            @{
+                                                                var sd = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+                                                                var ed = Convert.ToDateTime("2017-07-12");
+                                                                if (ed > sd)
+                                                                {
+                                                                    <textarea id="CommentDepict" class="textarea-fw textarea-bf" placeholder="请输入您的意见，20-300字以内……"></textarea>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <textarea id="CommentDepict" class="textarea-fw textarea-bf" placeholder="活动已结束，详情请致电0631-5208177" disabled="disabled"></textarea>
+
+                                                                }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="f-btn-tj"><a id="tj" href="javascript:;" style="color:#ffffff">提交</a></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- 评论列表  S -->
+                        <div node-type="module-cmt-list" class="module-cmt-list section-list-w">
+
+                            <div class="cmt-list-type">
+                                <ul class="clear-g type-lists">
+                                    <li class="type-list active">意见列表</li>
+                                </ul>
+                                <div class="cmt-list-border"></div>
+                                <div class="cmt-list-number">
+                                    <span class="comment-number"><span class="cy-number">@ViewBag.ccou</span>人参与,<span class="cy-number">@ViewBag.laudcou</span>人点赞</span>
+                                </div>
+                            </div>
+
+
+                            <!-- 最新评论 -->
+                            <div class="list-block-gw list-newest-w">
+                                @{foreach (var item in ViewBag.comlist)
+                                {
+                                    <div node-type="cmt-item" class="clear-g block-cont-gw">
+                                        <div class="cont-msg-gw">
+                                            <div class="msg-wrap-gw">
+                                                <div class="wrap-user-gw global-clear-spacing">
+                                                    <span class="user-time-gw">@item.CommentDate</span>
+                                                    <span node-type="nickname" class="user-name-gw"><a id="@item.UserId" href="javascript:;">@item.UserName</a></span>
+                                                    <span class="user-address-gw" style="color:#000000;font-weight:bold">[<i>编号</i>@item.CommentId]</span>
+                                                </div>
+                                                <div class="wrap-issue-gw">
+                                                    <p class="issue-wrap-gw"><span class="wrap-word-gw">@item.CommentDepict</span></p>
+                                                </div>
+
+                                                <div node-type="btns-bar" class="clear-g wrap-action-gw">
+                                                    <div node-type="action-click-gw" class="action-click-gw global-clear-spacing">
+                                                        <i class="gap-gw"></i>
+                                                        <span node-type="support" class="click-ding-gw">
+                                                            <a href="javascript:;" id="@item.CommentId" onclick="Laud(this.id)"><i class="icon-gw icon-ding-bg"></i><em id="@{@item.CommentId}land" class="icon-name-bg">@item.LaudCount</em></a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                }}
+                            </div>
+                        </div>
+                        <!-- 评论列表  E -->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="kz-footer"><a href="http://www.whinfo.net.cn" target="_blank">威海信息港 www.whinfo.net.cn</a></div>
+
+        </div>
+    </div>
+
+    <!--弹出层 开始-->
+    <div class="ui-mask" id="mask" onselectstart="return false" style="height:100%;width:100%; display:none"></div>
+    <div class="ui-dialog" id="dialogMove" onselectstart='return false;' style="left:50%; margin-left:-45%; width:90%; height:400px; top:50%;margin-top:-200px; display:none">
+        <div class="ui-dialog-title" id="dialogDrag" onselectstart="return false;">
+            做活动通知和领奖用，不对外公布，请放心填写<a class="ui-dialog-closebutton" href="javascript:;" id="closebutton"></a>
+        </div>
+        <div class="ui-dialog-content">
+            <div class="ui-dialog-l40 ui-dialog-pt15" style="padding-top:0">
+                手机号：<input id="UserPhone" class="ui-dialog-input ui-dialog-input-username" type="text" placeholder="请填写完整手机号码" value="" />
+            </div>
+            <div class="ui-dialog-l40 ui-dialog-pt15">
+                姓&nbsp;&nbsp;名：<input id="UserName" class="ui-dialog-input ui-dialog-input-username" type="text" placeholder="请填写您的真实姓名" value="" />
+            </div>
+            <div class="ui-dialog-140">
+                &nbsp;
+            </div>
+            <div>
+                <a id="SubmitComment" class="ui-dialog-submit" href="javascript:;">确定无误并提交</a>
+            </div>
+            <div class="ui-dialog-mytext">
+                红包秘钥：写下对新版的意见建议等，将您的评论编号和本次调查页面发送给你的小伙伴们，帮忙在您的评论下点赞，则有机会获得开版红包（按着<span>点赞</span>数，第<span>1</span>名获得<span class="cy-number">500</span>元红包，第<span>2-10</span>名获得<span class="cy-number">100</span>元红包，第<span>11-20</span>名获得<span class="cy-number">50</span>元红包）
+
+            </div>
+        </div>
+    </div>
+    <!--弹出层 结束-->
+    <!--弹出层2 开始-->
+    <div class="ui-mask" id="mask2" onselectstart="return false" style="height:100%;width:100%;display:none"> </div>
+    <div class="ui-dialog" id="dialogMove2" onselectstart='return false;' style="left:50%; margin-left:-45%; width:90%; height:260px; top:50%;margin-top:-130px;display:none">
+
+        <div class="ui-dialog-title" id="dialogDrag" onselectstart="return false;">
+            分享链接<a id="closebutton2" class="ui-dialog-closebutton" href="javascript:hideDialog();"></a>
+        </div>
+        <div class="ui-dialog-content">
+            <div class="ui-dialog-l40 ui-dialog-pt15" style="padding-top:0">
+                <input id="lj" class="ui-dialog-input ui-dialog-input-username" type="text" style="width:100%" />
+            </div>
+            <div class="ui-dialog-mytext">您好，赶快将上面的链接复制分享给您的小伙伴们，让大家帮忙给您的评论点赞吧，也请保存这个链接，可随时查看您的点赞数哦，祝大家好运！</div>
+        </div>
+    </div>
+    <!--弹出层2 结束-->
+    <div style="display:none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1262374507&web_id=1262374507" language="JavaScript"></script>
+    </div>
+
+    @Html.Hidden("cou")
+    @Html.Hidden("PapersId")
+</body>
+</html>
+
+<script src="~/js/javascript_m_index.js"></script>

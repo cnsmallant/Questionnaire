@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "新建选项-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item">问卷管理</li>
+    <li class="breadcrumb-item active">新建选项</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-edit"></i>新建选项
+                    </div>
+                    <div class="card-block">
+
+                        <div class="form-group">
+                            <div class="controls">
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon">选项描述</span>
+                                    <textarea id="OptionContent" class="form-control" placeholder="请输入选项描述" style="height:100px;"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button id="submit" class="btn btn-primary" style="cursor:pointer">提交</button>
+                            <a href="" class="btn btn-primary">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>
+@Html.Hidden("SubjectId")
+@Html.Hidden("PapersId")
+<script>
+    var OptionContent = $("#OptionContent");
+    var SubjectId = $("#SubjectId");
+    var PapersId = $("#PapersId");
+    var submit = $("#submit");
+    submit.click(function () {
+
+        if (OptionContent.val() == null || OptionContent.val() == "") {
+            alert("请输入描述");
+        }
+        else {
+            $.ajax({
+                url: "/Admin/Option/add",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        OptionContent: OptionContent.val(),
+                        SubjectId: SubjectId.val(),
+
+                    }),
+                dataType: "JSON",
+                success: function (data) {
+                    if (data == "NO") {
+                        alert("提交失败");
+                        return;
+                    } else if (data == "OK") {
+                        if (confirm("提交成功！是否继续添加？") == true) {
+                            window.location.href = location.href;
+                        } else {
+                            window.location.href = "/Admin/Option?SubjectId=" + SubjectId.val() + "&PapersId=" + PapersId.val();
+                        }
+                    }
+                }
+            });
+        }
+    })
+</script>
+

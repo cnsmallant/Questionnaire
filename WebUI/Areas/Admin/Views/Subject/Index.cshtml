@@ -1,0 +1,128 @@
+﻿@model PagedList<WebUI.Areas.Admin.Controllers.SubjectController.SubjectInfos>
+@using Webdiyer.WebControls.Mvc;
+@{
+    ViewBag.Title = "题目管理-";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">后台首页</li>
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "questionnaire")">问卷管理</a></li>
+    <li class="breadcrumb-item active">题目管理</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="fa fa-align-justify "></i> 题目列表</span>
+
+                        <span><a href="@Url.Action("create", "Subject", new { PapersId=ViewBag.PapersId })" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; 新建</a></span>
+
+                    </div>
+
+                    <div class="card-block text-center">
+                        <table class="table table-bordered table-striped table-condensed text-center">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">题目描述</th>
+                                    <th class="text-center">题目类型</th>
+                                    <th class="text-center">选项管理</th>
+                                    <th class="text-center">录入时间</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.SubjectDepict</td>
+                                            <td>
+                                                @{
+                                        var SubjectType = string.Empty;
+                                        if (item.SubjectType == 1)
+                                        {
+                                            SubjectType = "单选";
+                                        }
+                                        else if (item.SubjectType == 2)
+                                        {
+                                            SubjectType = "多选";
+                                        }
+                                        else
+                                        {
+                                            SubjectType = "文本";
+                                        }
+                                        ViewBag.SubjectType = SubjectType;
+                                                }
+                                                @ViewBag.SubjectType
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Index", "Option", new { SubjectId = item.SubjectId, PapersId = item.PapersId })">@{@item.OptionCount}个选项</a>
+                                            </td>
+                                            <td>@item.SubjectDate</td>
+                                            <td>
+                                                <a href="@Url.Action("modify", "Subject", new { SubjectId = item.SubjectId })"><i class="fa fa-edit"></i>&nbsp;修改</a>
+                                                <a id="@item.SubjectId" href="javascript:;" onclick="deletesub(this.id)"><i class="fa fa-trash"></i>&nbsp;删除</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                        <nav>
+                            @Html.Pager(
+                            Model,
+                            new PagerOptions
+                            {
+                                PageIndexParameterName = "pageid",
+                                NumericPagerItemCount = 5,
+                                ContainerTagName = "ul",
+                                CssClass = "pagination",
+                                CurrentPagerItemTemplate = "<li class='page-item active'><a class=\"page-link\" href=\"#\">{0}</a></li>",
+                                DisabledPagerItemTemplate = "<li class=\"page-item\"><a class=\"page-link\">{0}</a></li>",
+                                PagerItemTemplate = "<li>{0}</li>",
+                                PageIndexBoxId = "pageIndexBox",
+                                AutoHide = false,
+                                FirstPageText = "首页",
+                                LastPageText = "尾页",
+                                PrevPageText = "上一页",
+                                NextPageText = "下一页"
+                            })
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>
+<script>
+    function deletesub(id) {
+        if (confirm("是否删除？") == true) {
+            $.ajax({
+                url: "/Admin/Subject/delete",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        SubjectId: id,
+                    }),
+                dataType: "JSON",
+                success: function (data) {
+                    if (data == "NO") {
+                        alert("操作失败");
+                        return;
+                    } else if (data == "OK") {
+                        alert("操作成功");
+                        window.location.href = location.href;
+                    }
+                }
+            });
+        }
+    }
+</script>

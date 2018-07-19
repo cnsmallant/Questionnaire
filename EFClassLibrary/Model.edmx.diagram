@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e2e2e536a614c908804e8ba124e309f" Name="Diagram1">
+        <EntityTypeShape EntityType="QuestionnaireDBModel.AdminInfo" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuestionnaireDBModel.CommentInfo" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuestionnaireDBModel.LaudInfo" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QuestionnaireDBModel.OptionInfo" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QuestionnaireDBModel.PapersInfo" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuestionnaireDBModel.SubjectInfo" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="QuestionnaireDBModel.UserInfo" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuestionnaireDBModel.VoteInfo" Width="1.5" PointX="0.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
